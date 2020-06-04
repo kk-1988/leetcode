@@ -2,32 +2,23 @@
 #include <stdlib.h>
 
 int reverse(int x){
-    int j = 0, y = x;
-    long long result,ret;
+    long result = 0, y = x;
     int min = 0x80000000;
     int max = 0x7fffffff;
 
-    if(x < 0)
-        y = -x;
-    
-    while(y/10)
+    while(y)
     {
-        j = y % 10;
-        result = result * 10 + j * 10;
+        result = result * 10 + y %10;
         y = y / 10;
     }
-
-    if(y > 0)
-        result +=y;
-
-    ret = x < 0 ? -result:result;
     
-    return (ret > max || ret < min) ? 0:ret;
+    return (result > max || result < min) ? 0:result;
 }
 
 int main(int argc,char *argv[])
 {
     int ret;
+
     if(argc < 2)
     {
         printf("please input 2 param\r\n");
