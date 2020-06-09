@@ -12,43 +12,44 @@ list_node_t* add_two_numbers(list_node_t* l1, list_node_t* l2)
         return NULL;
 
     list_node_t *p = l1, *q = l2;
-    list_node_t *next = NULL,*head = NULL;
+    list_node_t *node = NULL,*head = NULL;
+	int flag = 0,sum = 0,node_value;
 
     while(p || q)
     {
-        next = calloc(1, sizeof(list_node_t));
-        if(NULL == next)
-            return NULL;
-
-        //产生node
-        next->val = ((NULL == p)?0:p->val) + ((NULL == q)?0:q->val);
-        next->next = NULL;
-        
-        if(NULL == head)
-            head = next;
-        else
-        {
-            next->next = head;
-            head->next = NULL;
-            head = next;
-        }
-            
+        sum = ((NULL == p)?0:p->val) + ((NULL == q)?0:q->val) + flag;
+		flag = sum / 10;
+		node_value = sum % 10;
+		
+		//生成结点
+        node = calloc(1, sizeof(list_node_t));
+        if(NULL == node)
+            return NULL;    
+						
+		node->val = node_value;
+		node->next = head;
+		head = node;
+		
         p++;
         q++;
     }
+	
+	if(flag > 0)
+	{
+		node = calloc(1, sizeof(list_node_t));
+        if(NULL == node)
+            return NULL;  
 
+		node->val = flag;
+		node->next = head;
+		head = node;		
+	}
+	
     return head;
 }
 
 int main(int argc,char *argv[])
 {
-    list_node_t *l1,*l2;
-    l1 = (list_node_t *)malloc(5);
-    l2 = (list_node_t *)malloc(4);
-
-    
-    
-
     add_two_numbers(l2, l2);
 
     return 0;
