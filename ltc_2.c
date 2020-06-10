@@ -11,10 +11,13 @@ list_node_t* add_two_numbers(list_node_t *l1, list_node_t *l2)
     if(NULL == l1 || NULL == l2)
         return NULL;
 
-    struct ListNode *p = l1, *q = l2;
-    struct ListNode *node = NULL,*head = (struct ListNode *)calloc(1, sizeof(struct ListNode));
-    struct ListNode *tail = head;
-	int flag = 0,sum = 0,node_value;
+    list_node_t *p = l1, *q = l2;
+    list_node_t *node = NULL;
+	list_node_t *head = (list_node_t *)calloc(1, sizeof(list_node_t));
+    list_node_t *tail = head;
+	int flag = 0;
+	int sum = 0;
+	int node_value;
 
     while(p || q)
     {
@@ -23,7 +26,7 @@ list_node_t* add_two_numbers(list_node_t *l1, list_node_t *l2)
 		node_value = sum % 10;
 
 		//生成结点
-        node = (struct ListNode *)calloc(1, sizeof(struct ListNode));
+        node = (list_node_t *)calloc(1, sizeof(list_node_t));
         if(NULL == node)
             return NULL;    
 				
@@ -41,7 +44,7 @@ list_node_t* add_two_numbers(list_node_t *l1, list_node_t *l2)
 	
 	if(flag > 0)
 	{
-		node = (struct ListNode *)calloc(1, sizeof(struct ListNode));
+		node = (list_node_t *)calloc(1, sizeof(list_node_t));
         if(NULL == node)
             return NULL;  
 
