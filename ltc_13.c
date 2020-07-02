@@ -7,38 +7,36 @@
 * C             100
 * D             500
 * M             1000
+* "MCMXCIV" == 1994
+*
 */
 int roman_to_int(char * s)
 {
-	char min_base_char = 'I';
-	unsigned short arr_value[6] = {1,5,10,50,100,500,1000};
+	char arr_value[6] = {'I','V','X','L','C','D','M'};
+	char min_base_char = 0;
 	char *p = s;
+	int i;
 	
     while(p)
 	{
-		switch(*p)
+		for(i = 0;i < 6;i++)
 		{
-			case 'I':
-			break;
-			
-			case 'V':
-			break;
-			
-			case 'X':
-			break;
-			
-			case 'L':
-			break;
-			
-			case 'C':
-			break;
-			
-			case 'D':
-			break;
-			
-			case 'M':
-			break;
+			if(*p == arr_value[i])
+			{
+				/* 根据索引排序 */
+				if(i >= min_base_char)
+				{
+					min_base_char = i;
+				}
+				else
+				{
+					/* 如果小于索引值 */
+					
+				}
+			}
 		}
+		
+		p++;
 	}
 }
 
