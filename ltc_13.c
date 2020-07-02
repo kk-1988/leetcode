@@ -12,25 +12,25 @@
 */
 int roman_to_int(char * s)
 {
-	char arr_value[6] = {'I','V','X','L','C','D','M'};
-	char min_base_char = 0;
+	char arr_char[7] = {'I','V','X','L','C','D','M'};
+	unsigned short arr_value[7] = {1, 5, 10, 50, 100, 500, 1000};
+	char min_base_idx = sizeof(arr_value);
 	char *p = s;
 	int i;
 	
     while(p)
 	{
-		for(i = 0;i < 6;i++)
+		for(i = 0;i < sizeof(arr_char);i++)
 		{
-			if(*p == arr_value[i])
+			if(*p == arr_char[i])
 			{
-				/* 根据索引排序 */
-				if(i >= min_base_char)
+				if(i < min_base_idx)
 				{
-					min_base_char = i;
+					min_base_idx = i;
 				}
 				else
 				{
-					/* 如果小于索引值 */
+					
 					
 				}
 			}
