@@ -17,6 +17,7 @@ int roman_to_int(char * s)
 	char min_base_idx = sizeof(arr_value);
 	char *p = s;
 	int i;
+	unsigned short sum = 0;
 	
     while(p)
 	{
@@ -27,10 +28,11 @@ int roman_to_int(char * s)
 				if(i < min_base_idx)
 				{
 					min_base_idx = i;
+					sum += arr_value[i];
 				}
 				else
 				{
-					
+					/* 如果大于,则把min_base_idx索引的值变成负值 */
 					
 				}
 			}
