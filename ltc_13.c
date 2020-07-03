@@ -25,8 +25,6 @@ int roman_to_int(char * s)
 		{
 			if(*p == arr_char[i])
 			{
-				pre_idx = i;
-				
 				if(i < pre_idx)
 				{
 					sum += arr_value[i];
@@ -36,6 +34,7 @@ int roman_to_int(char * s)
 					sum -= 2 * arr_value[i];
 				}
 				
+				pre_idx = i;
 				break;
 			}
 		}
