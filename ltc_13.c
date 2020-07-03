@@ -7,14 +7,14 @@
 * C             100
 * D             500
 * M             1000
-* "MCMXCIV" == 1994
+* "MCMXCIV" ==  1994
 *
 */
 int roman_to_int(char * s)
 {
 	char arr_char[7] = {'I','V','X','L','C','D','M'};
 	unsigned short arr_value[7] = {1, 5, 10, 50, 100, 500, 1000};
-	char min_base_idx = sizeof(arr_value);
+	char pre_idx = sizeof(arr_value);
 	char *p = s;
 	int i;
 	unsigned short sum = 0;
@@ -25,16 +25,18 @@ int roman_to_int(char * s)
 		{
 			if(*p == arr_char[i])
 			{
-				if(i < min_base_idx)
+				pre_idx = i;
+				
+				if(i < pre_idx)
 				{
-					min_base_idx = i;
 					sum += arr_value[i];
 				}
 				else
 				{
-					/* 如果大于,则把min_base_idx索引的值变成负值 */
-					
+					sum -= 2 * arr_value[i];
 				}
+				
+				break;
 			}
 		}
 		
