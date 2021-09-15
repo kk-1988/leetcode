@@ -1,2 +1,2 @@
 # leetcode
-leetcode 题目相关代码集合
+leetcode 题目相关代码练习
