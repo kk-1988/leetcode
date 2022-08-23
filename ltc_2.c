@@ -28,8 +28,8 @@ list_node_t* add_two_numbers(list_node_t *l1, list_node_t *l2)
 		//生成结点
         node = (list_node_t *)calloc(1, sizeof(list_node_t));
         if(NULL == node)
-            return NULL;    
-				
+            return NULL;
+
 		node->val = node_value;
         tail->next = node;
         tail = node;
@@ -41,18 +41,18 @@ list_node_t* add_two_numbers(list_node_t *l1, list_node_t *l2)
         if(q)
             q = q->next;
     }
-	
+
 	if(flag > 0)
 	{
 		node = (list_node_t *)calloc(1, sizeof(list_node_t));
         if(NULL == node)
-            return NULL;  
+            return NULL;
 
 		node->val = flag;
 		tail->next = node;
-        tail = node;	
+        tail = node;
 	}
-	
+
     return head->next;
 }
 
@@ -61,7 +61,7 @@ int main(int argc,char *argv[])
 	list_node_t *l1,*l2;
 	l1 = (list_node_t *)malloc(sizeof(list_node_t) * 5);
 	l2 = (list_node_t *)malloc(sizeof(list_node_t) * 4);
-	
+
     add_two_numbers(l1, l2);
 
     return 0;
