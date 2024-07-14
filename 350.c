@@ -4,11 +4,36 @@
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
 int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
-    int *result = NULL;
+    int hashMap1[1001] = { 0 };
+    int hashMap2[1001] = { 0 }; 
+    int *result = (int *)calloc(1, 1000 * sizeof(int));
+    int i ,j, n = 0, times = 0;
 
+    for(i = 0;i < nums1Size;i++) {
+        hashMap1[nums1[i]]++;
+    }
 
+    for(i = 0;i < nums2Size;i++) {
+        hashMap2[nums2[i]]++;
+    }
 
+    for(i = 0;i < 1001;i++)
+    {
+        if(hashMap1[i] >=1 && hashMap2[i] >= 1) {
+            times = hashMap1[i] >= hashMap2[i] ? hashMap2[i] : hashMap1[i];
+
+            for(j = 0;j < times;j++) {
+                result[n++] = i;
+            }
+        }
+    }
+
+    *returnSize = n;
+    return result;
 }
 
 int main(int argc, char *argv[])
