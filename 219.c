@@ -3,10 +3,11 @@
 #include <string.h>
 struct  hashMap {
     int key;
+    int index;
     UT_hash_handle hh;
 };
 
-bool containsDuplicate(int* nums, int numsSize) {
+bool containsDuplicate(int* nums, int numsSize, int k) {
     int i;
     struct hashMap *set = NULL;
     for (i = 0;i < numsSize;i++) {
@@ -15,13 +16,23 @@ bool containsDuplicate(int* nums, int numsSize) {
         if(!temp) {
             temp = calloc(1, sizeof(struct hashMap));
             temp->key = nums[i];
+            temp->index = i;
             HASH_ADD_INT(set, key, temp);
         }
-        else 
-            return true;
+        else {
+            if((i != temp->index) && (nums[i] == temp->key) && abs(i - temp->index) <= k)
+                return true;
+            else
+            {
+                HASH_DEL(set, temp);
+                temp->key = nums[i];
+                temp->index = i;
+                HASH_ADD_INT(set, key, temp);
+            }
+        }
     }
 
-    return false;;
+    return false;
 }
 
 int main(int argc, char *argv)
