@@ -26,22 +26,30 @@ myHashSet.add(2);      // set = [1, 2]
 myHashSet.contains(2); // 返回 True
 myHashSet.remove(2);   // set = [1]
 myHashSet.contains(2); // 返回 False ，（已移除）
- 
 
 提示：
-0 <= key <= 106
+0 <= key <= 10的6次方
 最多调用 104 次 add、remove 和 contains
 #endif
 
+/*
+* 1. 使用链式法添加对应key,如果一致的话，则不需要新加内容
+* 2. 
+*/
 typedef struct {
-    
+    int key;
+    MyHashSet *hashMap[1000000];
 } MyHashSet;
 
 
 MyHashSet* myHashSetCreate() {
-    
+    MyHashSet *hashObj = (MyHashSet *)calloc(1, sizeof(MyHashSet));
+    if(hashObj) {
+        
+    } 
 }
 
+/* create node */
 void myHashSetAdd(MyHashSet* obj, int key) {
     
 }
@@ -55,7 +63,10 @@ bool myHashSetContains(MyHashSet* obj, int key) {
 }
 
 void myHashSetFree(MyHashSet* obj) {
-    
+    if(obj) {
+        free(obj);
+        obj = NULL;
+    }
 }
 
 /**
@@ -69,3 +80,17 @@ void myHashSetFree(MyHashSet* obj) {
  
  * myHashSetFree(obj);
 */
+
+int main(int argc, char *argv[])
+{
+    MyHashSet *hashSet = myHashSetCreate();
+    
+
+
+    if(hashSet)
+    {
+        myHashSetFree(hashSet);
+        hashSet = NULL;
+    }
+    return 0;
+}
